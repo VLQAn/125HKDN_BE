@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
+use App\Models\Chuong;
+use Illuminate\Http\Request;
+
+class ChuongController extends Controller
+{
+    public function index()
+    {
+        $chuong = Chuong::orderBy('ThuTu')->get();
+
+        return response()->json([
+            'success' => true,
+            'data' => $chuong
+        ]);
+    }
+
+    public function show($id)
+    {
+        $chuong = Chuong::find($id);
+
+        if (!$chuong) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Không tìm thấy chương'
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $chuong
+        ]);
+    }
+}
