@@ -4,18 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ChonAnh extends Model
+class Video extends Model
 {
-    protected $table = 'chonanh';
+    protected $table = 'video';
     protected $primaryKey = 'ID_Cau';
     public $timestamps = true;
 
     protected $fillable = [
+        'DuongDanVideo',
         'CauHoi',
-        'DuongDanA',
-        'DuongDanB',
-        'DuongDanC',
-        'DuongDanD',
+        'DapAnA',
+        'DapAnB',
+        'DapAnC',
+        'DapAnD',
         'DapAnDung'
     ];
 }

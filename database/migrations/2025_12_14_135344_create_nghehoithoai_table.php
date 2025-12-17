@@ -15,6 +15,7 @@ return new class extends Migration
             $table->bigIncrements('ID_Cau');
             $table->string('DuongDanAudio', 255);
             $table->text('PhuDe')->nullable(); // Nội dung có thể null nếu không cần hiển thị
+            $table->text('CauHoi');
             $table->string('DapAnA', 255);
             $table->string('DapAnB', 255);
             $table->string('DapAnDung', 10); // Đáp án đúng (A, B,...)

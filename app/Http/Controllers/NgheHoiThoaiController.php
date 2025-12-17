@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\ChonAnh;
+use App\Models\NgheHoiThoai;
 
-class ChonAnhController extends Controller
+class NgheHoiThoaiController extends Controller
 {
     public function show($id)
     {
-        $chonAnh = ChonAnh::find($id);
+        $ngheHoiThoai = NgheHoiThoai::find($id);
 
-        if (!$chonAnh) {
+        if (!$ngheHoiThoai) {
             return response()->json([
                 'success' => false,
                 'message' => 'Không tìm thấy câu hỏi'
@@ -20,7 +19,7 @@ class ChonAnhController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $chonAnh
+            'data' => $ngheHoiThoai
         ]);
     }
 }

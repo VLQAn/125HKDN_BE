@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('dientu', function (Blueprint $table) {
             $table->bigIncrements('ID_Cau');
+            $table->text('CauHoi');
             $table->text('CauMau'); // Câu mẫu để điền từ
             $table->string('ManhGhepA', 255);
             $table->string('ManhGhepB', 255);

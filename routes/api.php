@@ -6,6 +6,11 @@ use App\Http\Controllers\Api\ChuongController;
 use App\Http\Controllers\Api\BaiHocController;
 use App\Http\Controllers\Api\CauHoiController;
 use App\Http\Controllers\Api\ChonAnhController;
+use App\Http\Controllers\DienTuController;
+use App\Http\Controllers\NgheHoiThoaiController;
+use App\Http\Controllers\NgheXepCauController;
+use App\Http\Controllers\TracNghiemController;
+use App\Http\Controllers\VideoController;
 
 Route::get('/users', [UserController::class, 'index']);
 Route::post('/users', [UserController::class, 'store']);
@@ -24,3 +29,13 @@ Route::get('/cauhoi', [CauHoiController::class, 'index']);
 Route::get('/cauhoi/{id}', [CauHoiController::class, 'show']);
 
 Route::get('/chonanh/{id}', [ChonAnhController::class, 'show']);
+
+Route::get('/dientu/{id}', [DienTuController::class, 'show']);
+
+Route::get('/nghehoithoai/{id}', [NgheHoiThoaiController::class, 'show']);
+
+Route::get('/nghexepcau/{id}', [NgheXepCauController::class, 'show']);
+
+Route::get('/video/{id}', [VideoController::class, 'show']);
+
+Route::get('/tracnghiem/{id}', [TracNghiemController::class, 'show']);
