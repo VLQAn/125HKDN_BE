@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Chuong;
-use Illuminate\Http\Request;
 
 class ChuongController extends Controller
 {

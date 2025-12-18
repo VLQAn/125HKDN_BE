@@ -32,18 +32,23 @@ class UserController extends Controller
         return response()->json($user, 201);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show($id)
     {
-        $user = User::findOrFail($id);
-        return response()->json($user);
+        $user = User::find($id);
+
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Không tìm thấy chương'
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $user
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         $user = User::findOrFail($id);
@@ -65,9 +70,6 @@ class UserController extends Controller
         return response()->json($user);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $user = User::findOrFail($id);
@@ -76,5 +78,22 @@ class UserController extends Controller
         return response()->json([
             'message' => 'User deleted successfully'
         ]);
+    }
+
+    public function top5UserDiemCaoNhat()
+    {
+        $users = User::orderBy('Diem', 'desc')
+            ->take(5)
+            ->get([
+                'ID_User',
+                'HoTen',
+                'Email',
+                'Diem'
+            ]);
+
+        return response()->json([
+            'message' => 'Top 5 user có điểm cao nhất',
+            'data' => $users
+        ], 200);
     }
 }
