@@ -27,6 +27,7 @@ Route::get('/chuong/{id}/baihoc', [BaiHocController::class, 'getByChuong']);
 Route::get('/baihoc', [BaiHocController::class, 'index']);
 Route::get('/baihoc/{id}', [BaiHocController::class, 'show']);
 Route::get('/baihoc/{id}/cauhoi', [CauHoiController::class, 'getByBaiHoc']);
+Route::get('/baihoc/{id}/cauhoichitiet', [CauHoiController::class, 'getChitietCauHoiByBaiHoc']);
 
 Route::get('/cauhoi', [CauHoiController::class, 'index']);
 Route::get('/cauhoi/{id}', [CauHoiController::class, 'show']);
