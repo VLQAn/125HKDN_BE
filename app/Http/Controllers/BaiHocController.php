@@ -1,48 +1,47 @@
 <?php
 
-namespace App\Http\Controllers\Api;
-
+namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
-use App\Models\CauHoi;
+use App\Models\BaiHoc;
 
-class CauHoiController extends Controller
+class BaiHocController extends Controller
 {
     public function index()
     {
-        $cauHoi = CauHoi::orderBy('ThuTu')->get();
+        $baihoc = BaiHoc::orderBy('ThuTu')->get();
 
         return response()->json([
             'success' => true,
-            'data' => $cauHoi
+            'data' => $baihoc
         ]);
     }
 
     public function show($id)
     {
-        $cauHoi = CauHoi::find($id);
+        $baihoc = BaiHoc::find($id);
 
-        if (!$cauHoi) {
+        if (!$baihoc) {
             return response()->json([
                 'success' => false,
-                'message' => 'Không tìm thấy câu hỏi'
+                'message' => 'Không tìm thấy bài học'
             ], 404);
         }
 
         return response()->json([
             'success' => true,
-            'data' => $cauHoi
+            'data' => $baihoc
         ]);
     }
 
-    public function getByBaiHoc($id)
+    public function getByChuong($id)
     {
-        $cauHoi = CauHoi::where('ID_BaiHoc', $id)
+        $baihoc = BaiHoc::where('ID_Chuong', $id)
                         ->orderBy('ThuTu')
                         ->get();
 
         return response()->json([
             'success' => true,
-            'data' => $cauHoi
+            'data' => $baihoc
         ]);
     }
 }

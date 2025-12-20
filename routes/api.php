@@ -1,17 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\UserController;
-use App\Http\Controllers\Api\ChuongController;
-use App\Http\Controllers\Api\BaiHocController;
-use App\Http\Controllers\Api\CauHoiController;
-use App\Http\Controllers\Api\ChonAnhController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ChuongController;
+use App\Http\Controllers\BaiHocController;
+use App\Http\Controllers\CauHoiController;
+use App\Http\Controllers\ChonAnhController;
 use App\Http\Controllers\DienTuController;
 use App\Http\Controllers\NgheHoiThoaiController;
 use App\Http\Controllers\NgheXepCauController;
 use App\Http\Controllers\TracNghiemController;
 use App\Http\Controllers\VideoController;
-use App\Http\Controllers\Api\TienDoHocController;
+use App\Http\Controllers\TienDoHocController;
 
 Route::get('/users/top-score', [UserController::class, 'top5UserDiemCaoNhat']);
 Route::get('/users', [UserController::class, 'index']);
