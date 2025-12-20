@@ -81,19 +81,24 @@ class UserController extends Controller
     }
 
     public function top5UserDiemCaoNhat()
-    {
-        $users = User::orderBy('Diem', 'desc')
-            ->take(5)
-            ->get([
-                'ID_User',
-                'HoTen',
-                'Email',
-                'Diem'
-            ]);
+{
+    $users = User::select([
+        'ID_User',
+        'HoTen',
+        'Email',
+        'Diem'
+    ])
+        ->orderBy('Diem', 'desc')
+        ->limit(5)
+        ->get()
+        ->map(function ($user, $index) {
+            $user->stt = $index + 1;
+            return $user;
+        });
 
-        return response()->json([
-            'message' => 'Top 5 user có điểm cao nhất',
-            'data' => $users
-        ], 200);
-    }
+    return response()->json([
+        'message' => 'Top 5 user có điểm cao nhất',
+        'data' => $users
+    ], 200);
+}
 }
