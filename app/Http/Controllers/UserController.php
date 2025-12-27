@@ -101,4 +101,16 @@ class UserController extends Controller
         'data' => $users
     ], 200);
 }
+public function AddPoints(int $point, string $id)
+{
+    $user = User::findOrFail($id);
+
+    $user->Diem += $point;
+    $user->save();
+
+    return response()->json([
+        'message' => 'Cộng điểm thành công',
+        'Diem' => $user->Diem
+    ]);
+}
 }
