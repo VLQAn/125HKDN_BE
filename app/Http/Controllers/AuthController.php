@@ -51,6 +51,6 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return response()->json(['user' => $user], 200);
+        return response()->json(['user' => $user->makeHidden(['MatKhau'])], 200);
     }
 }

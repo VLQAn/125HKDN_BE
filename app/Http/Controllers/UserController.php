@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\TienDoHoc;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -104,6 +105,12 @@ class UserController extends Controller
 public function AddPoints(int $point, string $id)
 {
     $user = User::findOrFail($id);
+    $tiendohoccuaUser = TienDoHoc::where('ID_User', $id)->firstOrFail();
+    if($point>=30){
+        
+        $tiendohoccuaUser->ID_BaiHoc+=1;
+        $tiendohoccuaUser->save();
+    }
 
     $user->Diem += $point;
     $user->save();
