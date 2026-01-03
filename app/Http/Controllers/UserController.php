@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        return response()->json(User::all());
+        return response()->json(User::withTrashed()->get());
     }
 
     public function store(Request $request)
@@ -35,7 +35,7 @@ class UserController extends Controller
 
     public function show($id)
     {
-        $user = User::find($id);
+        $user = User::withTrashed()->find($id);
 
         if (!$user) {
             return response()->json([
