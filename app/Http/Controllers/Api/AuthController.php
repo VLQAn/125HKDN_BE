@@ -49,13 +49,18 @@ class AuthController extends Controller
             'MatKhau' => 'required|string',
         ]);
 
-        $user = User::where('Email', $data['Email'])->first();
+        $user = User::withTrashed()->where('Email', $data['Email'])->first();
+        
         if (!$user || !Hash::check($data['MatKhau'], $user->MatKhau)) {
-            return response()->json(['message' => 'Invalid credentials'], 401);
+            return response()->json(['message' => 'Tài khoản hoặc mật khẩu không chính xác'], 401);
+        }
+
+        if ($user->trashed()) {
+            return response()->json(['message' => 'Tài khoản đã bị khóa'], 403);
         }
 
         Auth::login($user);
 
-        return response()->json(['user' => $user], 200);
+        return response()->json(['user' => $user->makeHidden(['MatKhau'])], 200);
     }
 }

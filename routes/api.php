@@ -12,13 +12,14 @@ use App\Http\Controllers\NgheXepCauController;
 use App\Http\Controllers\TracNghiemController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\TienDoHocController;
-use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\api\AuthController;
 
 Route::get('/users/top-score', [UserController::class, 'top5UserDiemCaoNhat']);
 Route::get('/users', [UserController::class, 'index']);
 Route::post('/users', [UserController::class, 'store']);
 Route::put('/users/{id}', [UserController::class, 'update']);
 Route::delete('/users/{id}', [UserController::class, 'destroy']);
+Route::post('/users/restore/{id}', [UserController::class, 'restore']);
 Route::get('/users/{id}', [UserController::class, 'show']);
 Route::put('/users/{point}/{id}/{idbaihoc}', [UserController::class, 'AddPoints']);
 

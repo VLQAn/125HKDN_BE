@@ -77,7 +77,7 @@ class UserController extends Controller
         $user->delete();
 
         return response()->json([
-            'message' => 'User deleted successfully'
+            'message' => 'Đã khóa tài khoản!'
         ]);
     }
 
@@ -137,6 +137,15 @@ class UserController extends Controller
         'message' => 'Cộng điểm thành công',
         'Diem' => $user->Diem,
         'BaiHocTiepTheo' => $tiendohoccuaUser->ID_BaiHoc
+    ]);
+}
+public function restore(string $id)
+{
+    $user = User::withTrashed()->findOrFail($id);
+    $user->restore();
+
+    return response()->json([
+        'message' => 'Đã khôi phục tài khoản!'
     ]);
 }
 }
