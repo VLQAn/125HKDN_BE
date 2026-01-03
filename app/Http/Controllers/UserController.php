@@ -101,23 +101,42 @@ class UserController extends Controller
         'message' => 'Top 5 user có điểm cao nhất',
         'data' => $users
     ], 200);
-}
-public function AddPoints(int $point, string $id)
+}public function AddPoints(int $point, string $id, int $idbaihoc)
 {
     $user = User::findOrFail($id);
     $tiendohoccuaUser = TienDoHoc::where('ID_User', $id)->firstOrFail();
-    if($point>=30){
-        
-        $tiendohoccuaUser->ID_BaiHoc+=1;
-        $tiendohoccuaUser->save();
+
+    // KIỂM TRA: Nếu bài học đã hoàn thành rồi, không cho cộng điểm nữa
+    if ($idbaihoc < $tiendohoccuaUser->ID_BaiHoc) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Bài học này đã được hoàn thành trước đó. Không thể cộng điểm lại.'
+        ], 400);
     }
 
+    // KIỂM TRA: Chỉ cho phép làm bài hiện tại (đang học)
+    if ($idbaihoc != $tiendohoccuaUser->ID_BaiHoc) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Bạn chỉ có thể làm bài đang học hiện tại.'
+        ], 400);
+    }
+
+    // Cộng điểm
     $user->Diem += $point;
     $user->save();
 
+    // Nếu đạt điểm >= 30 (đạt yêu cầu), chuyển sang bài tiếp theo
+    if ($point >= 30) {
+        $tiendohoccuaUser->ID_BaiHoc += 1;
+        $tiendohoccuaUser->save();
+    }
+
     return response()->json([
+        'success' => true,
         'message' => 'Cộng điểm thành công',
-        'Diem' => $user->Diem
+        'Diem' => $user->Diem,
+        'BaiHocTiepTheo' => $tiendohoccuaUser->ID_BaiHoc
     ]);
 }
 }
