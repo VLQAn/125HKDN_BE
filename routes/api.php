@@ -60,3 +60,4 @@ Route::get('/video/{id}', [VideoController::class, 'show']);
 Route::get('/tracnghiem/{id}', [TracNghiemController::class, 'show']);
 
 Route::get('/user/{id}/baihoc/dang-hoc', [TienDoHocController::class, 'baiHocDangHocGanNhat']);
+Route::get('/user/tiendo/{id}', [TienDoHocController::class, 'getTienDoHocOfUser']);

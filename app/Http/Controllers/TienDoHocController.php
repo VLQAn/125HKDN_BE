@@ -39,4 +39,14 @@ class TienDoHocController extends Controller
             ]
         ], 200);
     }
+     public function getTienDoHocOfUser($userId)
+    {
+        $tienDo = TienDoHoc::where('ID_User', $userId)
+            ->get();
+
+        return response()->json([
+            'success' => true,
+            'data' => $tienDo
+        ]);
+    }
 }
