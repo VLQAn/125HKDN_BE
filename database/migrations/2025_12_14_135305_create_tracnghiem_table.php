@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('tracnghiem', function (Blueprint $table) {
             $table->bigIncrements('ID_Cau');
             $table->text('CauHoi');        
-            $table->string('DapAnA', 255);
-            $table->string('DapAnB', 255);
-            $table->string('DapAnC', 255);
-            $table->string('DapAnD', 255);
-            $table->string('DapAnDung', 255); 
+            $table->string('DapAnA', 900);
+            $table->string('DapAnB', 900);
+            $table->string('DapAnC', 900);
+            $table->string('DapAnD', 900);
+            $table->string('DapAnDung', 900); 
             $table->timestamps();
             $table->foreign('ID_Cau')
                     ->references('ID_Cau')

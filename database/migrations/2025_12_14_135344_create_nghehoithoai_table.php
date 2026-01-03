@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('nghehoithoai', function (Blueprint $table) {
             $table->bigIncrements('ID_Cau');
-            $table->string('DuongDanAudio', 255);
+            $table->string('DuongDanAudio', 900);
             $table->text('PhuDe')->nullable(); // Nội dung có thể null nếu không cần hiển thị
             $table->text('CauHoi');
-            $table->string('DapAnA', 255);
-            $table->string('DapAnB', 255);
+            $table->string('DapAnA', 900);
+            $table->string('DapAnB', 900);
             $table->string('DapAnDung', 10); // Đáp án đúng (A, B,...)
             $table->timestamps();
             $table->foreign('ID_Cau')

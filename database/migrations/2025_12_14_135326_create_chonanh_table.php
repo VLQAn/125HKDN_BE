@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('chonanh', function (Blueprint $table) {
             $table->bigIncrements('ID_Cau');
             $table->text('CauHoi'); // Câu hỏi thường dài
-            $table->string('DuongDanA', 255); // Đường dẫn hình ảnh A
-            $table->string('DuongDanB', 255); // Đường dẫn hình ảnh B
-            $table->string('DuongDanC', 255); // Đường dẫn hình ảnh C
-            $table->string('DuongDanD', 255); // Đường dẫn hình ảnh D
+            $table->string('DuongDanA', 900); // Đường dẫn hình ảnh A
+            $table->string('DuongDanB', 900); // Đường dẫn hình ảnh B
+            $table->string('DuongDanC', 900); // Đường dẫn hình ảnh C
+            $table->string('DuongDanD', 900); // Đường dẫn hình ảnh D
             $table->string('DapAnDung', 10); // Lưu đáp án đúng (A, B, C, D)
             $table->timestamps();
             $table->foreign('ID_Cau')

@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('nghexepcau', function (Blueprint $table) {
             $table->bigIncrements('ID_Cau');
-            $table->string('DuongDanAudio', 255);
-            $table->string('ManhGhepA', 255);
-            $table->string('ManhGhepB', 255);
-            $table->string('ManhGhepC', 255);
-            $table->string('ManhGhepD', 255);
-            $table->string('DapAnDung', 255);
+            $table->string('DuongDanAudio', 900);
+            $table->string('ManhGhepA', 900);
+            $table->string('ManhGhepB', 900);
+            $table->string('ManhGhepC', 900);
+            $table->string('ManhGhepD', 900);
+            $table->string('DapAnDung', 900);
             $table->timestamps();
             $table->foreign('ID_Cau')
                     ->references('ID_Cau')
