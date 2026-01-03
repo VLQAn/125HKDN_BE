@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\TienDoHoc;
 class AuthController extends Controller
 {
     /**
@@ -28,7 +28,12 @@ class AuthController extends Controller
         $data['MatKhau'] = Hash::make($data['MatKhau']);
         $user = User::create($data);
 
-        // Log the user in via the default session guard
+        $data_tien_dohoc = [
+            'ID_User' => $user->ID_User,
+            'ID_BaiHoc' => 1,
+            'TrangThai' => 1,
+        ];
+        TienDoHoc::create($data_tien_dohoc);
         Auth::login($user);
 
         return response()->json(['user' => $user], 201);
