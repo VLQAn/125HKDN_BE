@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('video', function (Blueprint $table) {
             $table->bigIncrements('ID_Cau');
-            $table->string('DuongDanVideo', 255);
+            $table->string('DuongDanVideo', 900);
             $table->text('CauHoi');
-            $table->string('DapAnA', 255);
-            $table->string('DapAnB', 255);
-            $table->string('DapAnC', 255);
-            $table->string('DapAnD', 255);
+            $table->string('DapAnA', 900);
+            $table->string('DapAnB', 900);
+            $table->string('DapAnC', 900);
+            $table->string('DapAnD', 900);
             $table->string('DapAnDung', 10);
             $table->timestamps();
             $table->foreign('ID_Cau')

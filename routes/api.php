@@ -28,15 +28,24 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/chuong', [ChuongController::class, 'index']);
 Route::get('/chuong/{id}', [ChuongController::class, 'show']);
+Route::post('/chuong', [ChuongController::class, 'store']);
+Route::put('/chuong/{id}', [ChuongController::class, 'update']);
+Route::delete('/chuong/{id}', [ChuongController::class, 'destroy']);
 Route::get('/chuong/{id}/baihoc', [BaiHocController::class, 'getByChuong']);
 
 Route::get('/baihoc', [BaiHocController::class, 'index']);
 Route::get('/baihoc/{id}', [BaiHocController::class, 'show']);
+Route::post('/baihoc', [BaiHocController::class, 'store']);
+Route::put('/baihoc/{id}', [BaiHocController::class, 'update']);
+Route::delete('/baihoc/{id}', [BaiHocController::class, 'destroy']);
 Route::get('/baihoc/{id}/cauhoi', [CauHoiController::class, 'getByBaiHoc']);
 Route::get('/baihoc/{id}/cauhoichitiet', [CauHoiController::class, 'getChitietCauHoiByBaiHoc']);
 
 Route::get('/cauhoi', [CauHoiController::class, 'index']);
 Route::get('/cauhoi/{id}', [CauHoiController::class, 'show']);
+Route::post('/cauhoi', [CauHoiController::class, 'store']);
+Route::put('/cauhoi/{id}', [CauHoiController::class, 'update']);
+Route::delete('/cauhoi/{id}', [CauHoiController::class, 'destroy']);
 
 Route::get('/chonanh/{id}', [ChonAnhController::class, 'show']);
 
@@ -51,3 +60,4 @@ Route::get('/video/{id}', [VideoController::class, 'show']);
 Route::get('/tracnghiem/{id}', [TracNghiemController::class, 'show']);
 
 Route::get('/user/{id}/baihoc/dang-hoc', [TienDoHocController::class, 'baiHocDangHocGanNhat']);
+Route::get('/user/tiendo/{id}', [TienDoHocController::class, 'getTienDoHocOfUser']);
