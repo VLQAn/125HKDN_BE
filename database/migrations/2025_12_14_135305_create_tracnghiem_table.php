@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('DapAnB', 255);
             $table->string('DapAnC', 255);
             $table->string('DapAnD', 255);
-            $table->string('DapAnDung', 10); 
+            $table->string('DapAnDung', 255); 
             $table->timestamps();
             $table->foreign('ID_Cau')
                     ->references('ID_Cau')

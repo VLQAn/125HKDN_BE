@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('ManhGhepB', 255);
             $table->string('ManhGhepC', 255);
             $table->string('ManhGhepD', 255);
-            $table->string('DapAnDung', 10); // Vị trí (A, B, C, D) cho mảnh ghép
+            $table->string('DapAnDung', 255); // Vị trí (A, B, C, D) cho mảnh ghép
             $table->timestamps();
             $table->foreign('ID_Cau')
                     ->references('ID_Cau')
