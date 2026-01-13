@@ -25,6 +25,7 @@ Route::put('/users/{point}/{id}/{idbaihoc}', [UserController::class, 'AddPoints'
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::put('/users/{id}/online-time', [UserController::class, 'updateOnlineTime']);
 Route::post('/admin/login', [\App\Http\Controllers\AdminController::class, 'login']);
 
 Route::get('/chuong', [ChuongController::class, 'index']);

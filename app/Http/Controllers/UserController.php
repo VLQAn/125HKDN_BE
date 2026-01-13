@@ -148,4 +148,22 @@ public function restore(string $id)
         'message' => 'Đã khôi phục tài khoản!'
     ]);
 }
+public function updateOnlineTime(Request $request, string $id)
+{
+    $data = $request->validate([
+        'SoGioOnline' => 'required|numeric|min:0'
+    ]);
+
+    $user = User::findOrFail($id);
+    
+    // Cộng số giây vào
+    $user->SoGioOnline += $data['SoGioOnline'];
+    $user->save();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Cập nhật thời gian online thành công',
+        'SoGioOnline' => $user->SoGioOnline,
+    ]);
+}
 }
